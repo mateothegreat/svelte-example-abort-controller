@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { Github } from "@lucide/svelte";
+
   /**
    * Cyberpunk AbortController Demo
    * Shows active request status and manual cancellation with neon vibes
@@ -98,7 +100,7 @@
     </div>
     <div
       class="absolute inset-0"
-      style="background-image: linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px); background-size: 50px 50px; animation: grid-move 20s linear infinite;">
+      style="background-image: linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px); background-size: 50px 50px; animation grid-move 20s linear infinite;">
     </div>
   </div>
 
@@ -131,14 +133,20 @@
         🤖 ABORT_CTRL.EXE
       </h1>
 
-      <div class="relative">
-        <p
-          class="mb-2 border border-cyan-500/30 bg-black/50 px-4 py-2 text-xl tracking-widest text-cyan-300 backdrop-blur-sm">
-          [ NEURAL LINK PROTOCOL DEMONSTRATION ]
-        </p>
+      <div class="relative flex items-center gap-2">
         <div
           class="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-cyan-400/10 to-transparent">
         </div>
+        <p
+          class="mb-2 flex-1 border border-cyan-500/30 bg-black/50 px-4 py-2 text-xl tracking-widest text-green-400 backdrop-blur-sm hover:text-pink-500">
+          <a
+            href="https://github.com/mateothegreat/svelte-example-abort-controller"
+            target="_blank"
+            class="flex items-center gap-2"
+            rel="noopener noreferrer">
+            <Github class="h-6 w-6 text-slate-500" /> mateothegreat/svelte-example-abort-controller
+          </a>
+        </p>
       </div>
 
       <div class="mt-4 flex items-center justify-center space-x-4 text-green-400">
@@ -164,7 +172,7 @@
           bind:value={query}
           placeholder="ENTER NEURAL QUERY..."
           class="relative w-full border-2 border-cyan-500 bg-black p-4 font-mono text-xl tracking-wider text-cyan-400 placeholder-cyan-600 transition-all duration-300 focus:border-pink-500 focus:shadow-lg focus:shadow-cyan-500/50 focus:outline-none"
-          on:keydown={(e) => e.key === "Enter" && search()} />
+          onkeydown={(e) => e.key === "Enter" && search()} />
 
         <!-- Scanning line effect -->
         <div class="pointer-events-none absolute top-0 left-0 h-full w-full overflow-hidden">
@@ -183,7 +191,7 @@
             class="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-green-400 to-cyan-400 opacity-50 blur transition duration-300 group-hover:opacity-75">
           </div>
           <button
-            on:click={search}
+            onclick={search}
             disabled={loading || !query.trim()}
             class="relative transform border border-green-400 bg-gradient-to-r from-green-500 to-cyan-500 px-8 py-4 text-lg font-bold tracking-wider text-black uppercase transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/75 disabled:scale-100 disabled:border-gray-600 disabled:from-gray-700 disabled:to-gray-800 disabled:text-gray-500">
             <span class="relative z-10">
@@ -197,7 +205,7 @@
             class="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-red-400 to-pink-400 opacity-50 blur transition duration-300 group-hover:opacity-75">
           </div>
           <button
-            on:click={cancel}
+            onclick={cancel}
             disabled={!loading}
             class="relative transform border border-red-400 bg-gradient-to-r from-red-500 to-pink-500 px-8 py-4 text-lg font-bold tracking-wider text-black uppercase transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/75 disabled:scale-100 disabled:border-gray-600 disabled:from-gray-700 disabled:to-gray-800 disabled:text-gray-500">
             <span class="relative z-10"> ❌ ABORT PROTOCOL </span>
@@ -230,7 +238,7 @@
             </div>
             <div
               class="absolute h-12 w-12 animate-spin rounded-full border-4 border-cyan-400 border-b-transparent"
-              style="animation-direction: reverse; animation-duration: 1.5s;">
+              style="animation-direction reverse; animation-duration 1.5s;">
             </div>
             <div class="absolute h-8 w-8 animate-pulse rounded-full bg-yellow-400"></div>
           </div>
